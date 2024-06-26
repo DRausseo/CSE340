@@ -1,2 +1,30 @@
-<h2>Welcome to My New Repository</h2>
-<p>This is the home page.</p>
+<!-- index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSE Motors Home</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <%- include('partials/header.ejs') %>
+    <%- include('partials/navigation.ejs') %>
+    <main>
+        <section class="hero">
+            <h1>Welcome to CSE Motors</h1>
+            <p>Your one-stop shop for all your automotive needs.</p>
+            <img src="/images/hero.jpg" alt="CSE Motors Hero Image">
+        </section>
+        <section class="services">
+            <h2>Our Services</h2>
+            <ul>
+                <li>Car Sales</li>
+                <li>Maintenance</li>
+                <li>Repairs</li>
+            </ul>
+        </section>
+    </main>
+    <%- include('partials/footer.ejs') %>
+</body>
+</html>
