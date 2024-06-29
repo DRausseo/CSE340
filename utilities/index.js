@@ -1,5 +1,37 @@
 const invModel = require("../models/inventory-models")
 const Util = {}
+exports.renderVehicleDetails = (vehicle) => {
+  return `
+    <html>
+      <head>
+        <title>${vehicle.make} ${vehicle.model}</title>
+        <style>
+          /* Estilos responsivos aquí */
+          .container {
+            display: flex;
+            flex-direction: column;
+          }
+          @media(min-width: 768px) {
+            .container {
+              flex-direction: row;
+            }
+          }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <img src="${vehicle.image}" alt="${vehicle.make} ${vehicle.model}">
+          <div>
+            <h1>${vehicle.year} ${vehicle.make} ${vehicle.model}</h1>
+            <p>Price: $${vehicle.price.toLocaleString()}</p>
+            <p>Mileage: ${vehicle.mileage.toLocaleString()} miles</p>
+            <!-- Más detalles aquí -->
+          </div>
+        </div>
+      </body>
+    </html>
+  `;
+};
 
 /* ************************
  * Constructs the nav HTML unordered list
