@@ -11,28 +11,31 @@ const expressLayouts = require("express-ejs-layouts");
 const env = require("dotenv").config();
 const path = require("path");
 const staticRoutes = require("./routes/static");
+const inventoryRoute = require("./routes/inventoryRoute");
+const baseController = require("./controllers/baseController");
+
 const app = express();
+
 
 /* ***********************
  * Middleware
  *************************/
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'));
 
 /* ***********************
  * View Engine and Templates
  *************************/
 app.set("view engine", "ejs");
 app.use(expressLayouts);
-app.set("layout", "./layouts/layout"); // Ruta del layout principal
+app.set("layout", "./layouts/layout");
 
 /* ***********************
  * Routes
  *************************/
+app.get("/", baseController.buildHome);
+app.use('/inv', inventoryRoute);
 app.use('/', staticRoutes);
-
-app.get("/", function(req, res){
-  res.render("index", { title: "Home" });
-});
 
 /* ***********************
  * Local Server Information
